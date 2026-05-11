@@ -1,183 +1,638 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bản Tin Hôm Nay</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, sans-serif;
-      background: url('https://media.tenor.com/2uyENRmiUt0AAAAd/anime-sky.gif') no-repeat center center fixed;
-      background-size: cover;
-    }
-    header {
-      background: linear-gradient(90deg, #1877f2, #42a5f5);
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    nav {
-      background: white;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      padding: 12px;
-      border-bottom: 2px solid #1877f2;
-    }
-    nav a {
-      text-decoration: none;
-      color: #1877f2;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover { color: #ff5722; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
 
-    .container {
-      max-width: 1100px;
-      margin: 20px auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 20px;
-      padding: 0 15px;
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    font-family:"Open Sans",sans-serif;
+    background:#ffd6e7;
+}
+
+/* ================= PAGE 1 ================= */
+
+#page1{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background:#ffd6e7;
+}
+
+/* canvas */
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1;
+}
+
+/* TEXT */
+
+#text{
+
+    position:absolute;
+
+    left:50%;
+    top:28%;
+
+    transform:translateX(-50%);
+
+    font-size:70px;
+    font-weight:700;
+
+    color:#ff2d75;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    width:0;
+
+    z-index:20;
+
+    text-shadow:
+    0 0 10px #ff2d75,
+    0 0 20px #ff2d75,
+    0 0 40px #ff5fa2;
+
+    border-right:4px solid #ff2d75;
+
+    animation:
+    typing 8s steps(130,end) forwards,
+    blinkCursor .7s infinite;
+
+    animation-delay:5s;
+}
+
+@keyframes typing{
+
+    from{
+        width:0;
     }
 
-    .news {
-      background: white;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border-left: 6px solid #1877f2;
-      transition: transform 0.2s;
+    to{
+        width:130ch;
     }
-    .news:hover {
-      transform: translateY(-5px);
-      border-left: 6px solid #ff5722;
-    }
-    .news h2 {
-      color: #1877f2;
-      margin-bottom: 10px;
-    }
-    .news p { margin-bottom: 10px; }
+}
 
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+@keyframes blinkCursor{
+
+    50%{
+        border-color:transparent;
+    }
+}
+
+/* ================= GIRL ================= */
+
+#girl{
+
+    position:absolute;
+
+    left:-200px;
+    bottom:40px;
+
+    width:220px;
+    height:380px;
+
+    z-index:999;
+
+    animation:
+    moveGirl 3.5s ease forwards;
+}
+
+@keyframes moveGirl{
+
+    from{
+        left:-200px;
     }
 
-    .widget {
-      background: white;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border-top: 5px solid #ff9800;
+    to{
+        left:calc(50% - 110px);
     }
-    .widget h3 {
-      margin-bottom: 10px;
-      color: #ff5722;
+}
+
+/* head */
+
+.head{
+
+    width:90px;
+    height:90px;
+
+    background:#ffe0bd;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    position:relative;
+
+    border:4px solid #222;
+}
+
+/* hair */
+
+.hair{
+
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    background:#222;
+
+    border-radius:50%;
+
+    top:-10px;
+    left:-5px;
+
+    z-index:-1;
+}
+
+/* eyes */
+
+.eye{
+
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    background:#222;
+
+    border-radius:50%;
+
+    top:38px;
+}
+
+.eye.left{
+    left:22px;
+}
+
+.eye.right{
+    right:22px;
+}
+
+/* smile */
+
+.mouth{
+
+    position:absolute;
+
+    width:30px;
+    height:15px;
+
+    border-bottom:4px solid #ff4f81;
+
+    border-radius:0 0 20px 20px;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    bottom:18px;
+}
+
+/* body */
+
+.bodyGirl{
+
+    width:80px;
+    height:120px;
+
+    background:#ff4f81;
+
+    margin:10px auto;
+
+    border-radius:20px;
+}
+
+/* arms */
+
+.arms{
+
+    position:absolute;
+
+    top:110px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:220px;
+    height:100px;
+}
+
+.arm{
+
+    position:absolute;
+
+    width:90px;
+    height:18px;
+
+    background:#ffe0bd;
+
+    border-radius:20px;
+}
+
+/* left arm */
+
+.arm-left{
+
+    left:0;
+
+    transform:
+    rotate(25deg);
+
+    transform-origin:right center;
+
+    animation:
+    leftArm 1s forwards;
+
+    animation-delay:3.5s;
+}
+
+/* right arm */
+
+.arm-right{
+
+    right:0;
+
+    transform:
+    rotate(-25deg);
+
+    transform-origin:left center;
+
+    animation:
+    rightArm 1s forwards;
+
+    animation-delay:3.5s;
+}
+
+@keyframes leftArm{
+
+    to{
+        transform:
+        rotate(-35deg)
+        translateY(-15px);
     }
-    footer {
-      margin-top: 20px;
-      background: linear-gradient(90deg, #1877f2, #42a5f5);
-      color: white;
-      text-align: center;
-      padding: 15px;
+}
+
+@keyframes rightArm{
+
+    to{
+        transform:
+        rotate(35deg)
+        translateY(-15px);
     }
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
+}
+
+/* legs */
+
+.legs{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+}
+
+.leg{
+
+    width:18px;
+    height:90px;
+
+    background:#ffe0bd;
+
+    border-radius:20px;
+}
+
+/* stars */
+
+.star{
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:white;
+
+    animation:blink 2s infinite;
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:.2;
     }
-  </style>
+}
+
+body.play-music{
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        background:#ffd6e7;
+    }
+    to{
+        background:#ffc1da;
+    }
+}
+
+@media(max-width:768px){
+
+    #text{
+        font-size:32px;
+        top:20%;
+    }
+
+    #girl{
+        transform:scale(.8);
+    }
+}
+
+</style>
 </head>
 
-
-
-
-
-
-  
 <body>
 
-<header>
-  <h1> BẢN TIN HÔM NAY</h1>
-  <p>Cập nhật tin tức nhanh chóng & chính xác</p>
-</header>
+<!-- PAGE 1 -->
 
-<nav>
-  <a href="#">Trang chủ</a>
-  <a href="https://vtv.vn/truyen-hinh-truc-tuyen/vtv1.htm" target="_blank">Thời sự</a>
-  <a href="https://cellphones.com.vn/dia-chi-cua-hang/hai-phong" target="_blank">Công nghệ</a>
-  <a href="https://www.youtube.com/" target="_blank">Giải trí</a>
-</nav>
+<div id="page1">
 
-<div class="container">
+    <div id="girl">
 
-  <div>
-    <div class="news">
-      <h2> Giá vàng hôm nay biến động mạnh</h2>
-      <p>Giá vàng trong nước và thế giới đang có nhiều biến động do ảnh hưởng từ tình hình kinh tế và lãi suất toàn cầu.</p>
+        <div class="head">
+
+            <div class="hair"></div>
+
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+
+            <div class="mouth"></div>
+
+        </div>
+
+        <div class="arms">
+
+            <div class="arm arm-left"></div>
+            <div class="arm arm-right"></div>
+
+        </div>
+
+        <div class="bodyGirl"></div>
+
+        <div class="legs">
+
+            <div class="leg"></div>
+            <div class="leg"></div>
+
+        </div>
+
     </div>
 
-    <div class="news">
-      <h2> Tình hình chiến tranh thế giới căng thẳng</h2>
-      <p>Nhiều khu vực trên thế giới tiếp tục xảy ra xung đột, gây ảnh hưởng lớn đến kinh tế và đời sống người dân.</p>
+    <div id="text">
+        HAPPY BIRTHDAY BChau nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     </div>
 
-    <div class="news">
-      <h2> Dự báo thời tiết hôm nay</h2>
-      <p>Khu vực miền Bắc có nắng nhẹ, miền Nam có mưa rào rải rác vào chiều tối.</p>
-    </div>
-
-    <div class="news">
-      <h2> Tin nóng: Công nghệ AI phát triển mạnh</h2>
-      <p>Các công ty công nghệ lớn đang đẩy mạnh đầu tư vào trí tuệ nhân tạo, mở ra nhiều cơ hội và thách thức mới.</p>
-    </div>
-
-    <div class="news">
-      <h2> Kinh tế toàn cầu có dấu hiệu phục hồi</h2>
-      <p>Sau nhiều biến động, nền kinh tế thế giới đang dần ổn định và có xu hướng tăng trưởng trở lại.</p>
-    </div>
-
-    <div class="news">
-      <h2> Thể thao: Giải đấu hấp dẫn cuối tuần</h2>
-      <p>Nhiều trận đấu kịch tính sẽ diễn ra vào cuối tuần, thu hút sự chú ý của người hâm mộ.</p>
-    </div>
-  </div>
-
-  <div class="sidebar">
-    <div class="widget">
-      <h3> Tin nổi bật</h3>
-      <p>- AI thay đổi thế giới</p>
-      <p>- Giá vàng tăng mạnh</p>
-      <p>- Xu hướng công nghệ 2026</p>
-    </div>
-
-    <div class="widget">
-      <h3> Thời tiết</h3>
-      <p>Hôm nay: Nắng nhẹ, 28°C</p>
-      <p>Ngày mai: Có mưa, 26°C</p>
-    </div>
-
-    <div class="widget">
-      <h3> Quảng cáo</h3>
-      <img src="file:///C:/Users/admin/Pictures/Screenshots/Screenshot%202026-03-25%20002523.png" alt="quangcao" style="width:100%; border-radius:10px; margin-bottom:10px;">
-      <p><b>Our - dream</b> - Nhóm chuyên nhận làm BTL, NCKH uy tín, hỗ trợ nhanh chóng và chất lượng.</p>
-    </div>
-  </div>
+    <canvas id="canvas"></canvas>
 
 </div>
 
-<footer>
-  <p>© 2026 Bản Tin Hôm Nay</p>
-  <div style="margin-top:10px;">
-    <p>Nghe nhạc:</p>
-    <audio controls autoplay loop style="width:300px; margin-top:10px;">
-      <source src="music.mp3" type="audio/mpeg">
-    </audio>
-  </div>
-</footer>
+<script>
+
+/* ================= MUSIC ================= */
+
+const audio = document.createElement("audio");
+
+audio.src =
+"https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=happy-birthday-to-you-piano-version-13976.mp3";
+
+audio.loop = true;
+audio.autoplay = true;
+audio.volume = 1;
+
+document.body.appendChild(audio);
+
+/* FORCE PLAY */
+
+function playMusic(){
+
+    audio.play()
+    .then(() => {
+
+        console.log("Nhạc đang phát");
+
+        document.body.classList.add("play-music");
+
+    })
+    .catch((err) => {
+
+        console.log("Autoplay bị chặn", err);
+
+    });
+}
+
+/* chạy ngay khi mở */
+
+window.addEventListener("load", () => {
+
+    playMusic();
+
+});
+
+/* chrome chặn thì chỉ cần đụng chuột là phát */
+
+document.body.addEventListener(
+    "mousemove",
+    playMusic,
+    { once:true }
+);
+
+document.body.addEventListener(
+    "click",
+    playMusic,
+    { once:true }
+);
+
+document.body.addEventListener(
+    "touchstart",
+    playMusic,
+    { once:true }
+);
+
+/* ================= CANVAS ================= */
+
+const canvas =
+document.getElementById("canvas");
+
+const ctx =
+canvas.getContext("2d");
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+const girl =
+document.getElementById("girl");
+
+const particles = [];
+
+function createParticle(x,y){
+
+    particles.push({
+
+        x,
+        y,
+
+        size:
+        Math.random()*4+2,
+
+        speedX:
+        (Math.random()-.5)*2,
+
+        speedY:
+        (Math.random()-.5)*2,
+
+        alpha:1
+    });
+}
+
+function drawParticles(){
+
+    for(let i=0;i<particles.length;i++){
+
+        const p =
+        particles[i];
+
+        ctx.beginPath();
+
+        ctx.fillStyle =
+        `rgba(255,50,150,${p.alpha})`;
+
+        ctx.shadowBlur = 20;
+
+        ctx.shadowColor =
+        "#ff2d75";
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+        p.x += p.speedX;
+
+        p.y += p.speedY;
+
+        p.alpha -= 0.015;
+
+        if(p.alpha <= 0){
+
+            particles.splice(i,1);
+
+            i--;
+        }
+    }
+}
+
+let t = 0;
+
+function animate(){
+
+    requestAnimationFrame(animate);
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    drawParticles();
+
+    if(t > 220 && t < 340){
+
+        const rect =
+        girl.getBoundingClientRect();
+
+        const x =
+        rect.left +
+        rect.width/2;
+
+        const y =
+        rect.top + 120;
+
+        for(let i=0;i<5;i++){
+
+            createParticle(
+                x + (Math.random()-0.5)*40,
+                y + (Math.random()-0.5)*20
+            );
+        }
+    }
+
+    t++;
+}
+
+animate();
+
+/* ================= STARS ================= */
+
+for(let i=0;i<80;i++){
+
+    const star =
+    document.createElement("div");
+
+    star.classList.add("star");
+
+    star.style.left =
+    Math.random()*100+"vw";
+
+    star.style.top =
+    Math.random()*100+"vh";
+
+    star.style.animationDuration =
+    Math.random()*3+1+"s";
+
+    document.getElementById("page1")
+    .appendChild(star);
+}
+
+/* resize */
+
+window.addEventListener("resize",()=>{
+
+    canvas.width =
+    window.innerWidth;
+
+    canvas.height =
+    window.innerHeight;
+});
+
+</script>
 
 </body>
 </html>
